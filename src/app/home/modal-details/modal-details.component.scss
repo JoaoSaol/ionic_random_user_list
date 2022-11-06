@@ -1,0 +1,16 @@
+ion-content{
+  .content-principale-card {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: flex-start;
+  }
+  .img-content {
+    margin-top: 10px;
+    img {
+      border-radius: 15px;
+    }
+  }
+}

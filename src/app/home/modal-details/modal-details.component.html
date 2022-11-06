@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Random User Details</ion-title>
+    <ion-buttons slot="end">
+      <!-- <ion-button (click)="confirm()">Confirm</ion-button> -->
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-card>
+    <div align="center">
+      <div class="img-content">
+        <img src="{{picture}}">
+      </div>
+      <p>
+        <b>
+          Name:
+        </b>
+        {{allName}}
+      </p>
+      <p>
+        Cell: {{cell}}
+      </p>
+      <p>
+        Phone: {{phone}}
+      </p>
+      <p>
+        Email: {{email}}
+      </p>
+      <p>
+        {{age}} Years old
+      </p>
+      <p>
+        From: {{nat}}
+      </p>
+    </div>
+  </ion-card>
+  <ion-card align="center">
+    <p>
+      Gender: {{gender}}
+    </p>
+  </ion-card>
+  <ion-card align="center">
+    <p>
+      City: {{city}}
+    </p>
+    <p>
+      Country: {{country}}
+    </p>
+  </ion-card>
+  <ion-card align="center">
+    <p>
+      registered by {{registered}} year(s)
+    </p>
+  </ion-card>
+</ion-content>
