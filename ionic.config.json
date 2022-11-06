@@ -1,0 +1,7 @@
+{
+  "name": "ionic_test_random_list",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
