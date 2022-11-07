@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonInfiniteScroll, IonModal, ModalController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core';
 import { ApiService } from '../service/api.service';
+import { LocalStorageService } from '../service/local-storage.service';
 import { ModalDetailsComponent } from './modal-details/modal-details.component';
 
 @Component({
@@ -16,9 +17,13 @@ export class HomePage implements OnInit {
 
   userData: any;
 
+  term: any;
+
+
   constructor(
     private api: ApiService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private storage: LocalStorageService
   ) { }
 
   ngOnInit(): void {
@@ -33,18 +38,25 @@ export class HomePage implements OnInit {
       this.userData = response.results;
       console.log(this.userData);
 
-      // this.notifier.notify('success', 'Login efetuado com exito!');
     }, error => {
 
-      // this.notifier.notify('error', 'Erro ao conectar com o servidor');
     });
+
   }
 
   loadData(event) {
     setTimeout(() => {
       console.log('Done');
       event.target.complete();
+      this.api.get(`api/?results=${1000}`, '').subscribe((response) => {
+        console.log('Resposta consulta ', response);
 
+        this.userData = response.results;
+        console.log(this.userData);
+
+      }, error => {
+
+      });
       // App logic to determine if all data is loaded
       // and disable the infinite scroll
       if (this.userData.length === 1000) {
@@ -56,7 +68,7 @@ export class HomePage implements OnInit {
   async openModal(dataParser: any) {
     const modal = await this.modalCtrl.create({
       component: ModalDetailsComponent,
-      componentProps: {dataParser}
+      componentProps: { dataParser }
     });
     modal.present();
 
@@ -64,7 +76,7 @@ export class HomePage implements OnInit {
 
     if (role === 'confirm') {
       // this.message = `Hello, ${data}!`;4
-      console.log('Modal Fechado');
+      console.log('Modal Closed');
     }
   }
 

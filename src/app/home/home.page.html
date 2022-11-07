@@ -3,11 +3,20 @@
     <ion-title>
       Random User
     </ion-title>
+    <ion-list slot="end">
+      <ion-item>
+        <ion-select placeholder="Select gender" [multiple]="false" [(ngModel)]="term">
+          <ion-select-option value="">All</ion-select-option>
+          <ion-select-option value="female">female</ion-select-option>
+          <ion-select-option value="male">male</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list *ngFor="let data of userData">
+  <ion-list *ngFor="let data of userData | filter: term">
     <ion-item (click)="openModal(data)">
       <ion-avatar slot="start">
         <img src="{{data.picture.thumbnail}}">
@@ -16,7 +25,6 @@
         <h3 ion-text>{{data.name.title}}, {{data.name.first}} {{data.name.last}}</h3>
         <p>Email : {{data.email}}</p>
       </ion-label>
-      <!-- {{data.email}} -->
     </ion-item>
   </ion-list>
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">

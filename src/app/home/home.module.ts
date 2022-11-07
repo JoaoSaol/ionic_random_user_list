@@ -6,14 +6,16 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { ModalDetailsComponent } from './modal-details/modal-details.component';
-
+import { MatPaginator } from '@angular/material/paginator';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    Ng2SearchPipeModule
   ],
   declarations: [HomePage, ModalDetailsComponent]
 })
